@@ -1,0 +1,55 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.29728.190
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.Interfaces", "DapperTesting.Interfaces\DapperTesting.Interfaces.csproj", "{1FD1CAB0-7D17-4774-9058-669AEEA4B015}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.Models", "DapperTesting.Models\DapperTesting.Models.csproj", "{F39FD801-3230-45A4-9FC8-ACAF898F41EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.DTOs", "DapperTesting.DTOs\DapperTesting.DTOs.csproj", "{CEAFEC73-523E-4598-98B7-375693C93D0B}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.DbServices", "DapperTesting.DbServices\DapperTesting.DbServices.csproj", "{253141ED-6DD0-4092-A6D5-9ED1D08711EF}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.ConsoleApp", "DapperTestingConsole\DapperTesting.ConsoleApp.csproj", "{6AA758F9-BB03-4698-80A2-E1A652E5654C}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperTesting.WebApp", "DapperTesting.WebApp\DapperTesting.WebApp.csproj", "{59E686FA-900F-4EE4-88BD-FE8E9E2BCF00}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{1FD1CAB0-7D17-4774-9058-669AEEA4B015}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1FD1CAB0-7D17-4774-9058-669AEEA4B015}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1FD1CAB0-7D17-4774-9058-669AEEA4B015}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1FD1CAB0-7D17-4774-9058-669AEEA4B015}.Release|Any CPU.Build.0 = Release|Any CPU
+		{F39FD801-3230-45A4-9FC8-ACAF898F41EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F39FD801-3230-45A4-9FC8-ACAF898F41EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F39FD801-3230-45A4-9FC8-ACAF898F41EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F39FD801-3230-45A4-9FC8-ACAF898F41EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CEAFEC73-523E-4598-98B7-375693C93D0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CEAFEC73-523E-4598-98B7-375693C93D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CEAFEC73-523E-4598-98B7-375693C93D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CEAFEC73-523E-4598-98B7-375693C93D0B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{253141ED-6DD0-4092-A6D5-9ED1D08711EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{253141ED-6DD0-4092-A6D5-9ED1D08711EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{253141ED-6DD0-4092-A6D5-9ED1D08711EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{253141ED-6DD0-4092-A6D5-9ED1D08711EF}.Release|Any CPU.Build.0 = Release|Any CPU
+		{6AA758F9-BB03-4698-80A2-E1A652E5654C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{6AA758F9-BB03-4698-80A2-E1A652E5654C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{6AA758F9-BB03-4698-80A2-E1A652E5654C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{6AA758F9-BB03-4698-80A2-E1A652E5654C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59E686FA-900F-4EE4-88BD-FE8E9E2BCF00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59E686FA-900F-4EE4-88BD-FE8E9E2BCF00}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59E686FA-900F-4EE4-88BD-FE8E9E2BCF00}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59E686FA-900F-4EE4-88BD-FE8E9E2BCF00}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {E58A9222-5500-41F8-8912-32859388F2E6}
+	EndGlobalSection
+EndGlobal
