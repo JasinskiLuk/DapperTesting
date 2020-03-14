@@ -13,33 +13,36 @@ namespace DapperTesting.DbServices
         public DbCarServices(IConfiguration configuration) : base(configuration)
         {
         }
-        public Task<int> AddCar(CarDTO CarServices)
+        public async Task AddCar(CarDTO CarServices)
         {
-            throw new System.NotImplementedException();
+            using SqlConnection conn = new SqlConnection(_connectionString);
+            await conn.QueryAsync(@"INSERT INTO [Cars]([Name], [Price], [DateId])
+                                    VALUES(@Name, @Price, @DateId)",
+                new { CarServices.Name, CarServices.Price, CarServices.DateId });
         }
 
-        public Task DeleteCar(int CarId, CarDTO CarServices)
+        public async Task DeleteCar(int CarId)
         {
-            throw new System.NotImplementedException();
+            using SqlConnection conn = new SqlConnection(_connectionString);
+            await conn.ExecuteAsync(@"DELETE FROM [Cars] WHERE [Id] = @Id", new { Id = CarId });
         }
 
-        public Task EditCar(CarDTO CarServices)
+        public async Task EditCar(CarDTO CarServices)
         {
-            throw new System.NotImplementedException();
+            using SqlConnection conn = new SqlConnection(_connectionString);
+            await conn.QueryAsync(@"UPDATE [Cars]
+                                    SET [Name] = @Name,
+                                        [Price] = @Price,
+                                        [DateId] = @DateId
+                                    WHERE [Id] = @Id",
+                                    new { CarServices.Id, CarServices.Name, CarServices.Price, CarServices.DateId });
         }
 
         public async Task<IEnumerable<CarDTO>> GetCars()
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
-            return await conn.QueryAsync<CarDTO>("SELECT * FROM cars");
-        }
-
-        public async Task<CarDTO> GetOneCar(int CarId)
-        {
-            using SqlConnection conn = new SqlConnection(_connectionString);
-            var sql = @"SELECT id, name, price FROM cars WHERE id = @Id";
-            var car = await conn.QueryFirstOrDefaultAsync<CarDTO>(sql, new { Id = CarId });
-            return car ?? new NullCarDTO();
+            return await conn.QueryAsync<CarDTO>(@"SELECT [Id], [Name], [Price], [DateId]
+                                                   FROM [Cars]");
         }
     }
 }

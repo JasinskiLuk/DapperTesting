@@ -1,11 +1,12 @@
-﻿using System;
-
-namespace DapperTesting.DTOs
+﻿namespace DapperTesting.DTOs
 {
     public class CarDTO
     {
-        public virtual int Id { get; set; }
-        public virtual string Name { get; set; }
-        public virtual int Price { get; set; }
+        public int Id { get; set; }
+        public string Name { get; set; }
+        public int Price { get; set; }
+        public int DateId { get; set; }
+
+        public DateTestDTO Dates { get; set; }
     }
 }

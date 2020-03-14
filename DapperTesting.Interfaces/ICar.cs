@@ -8,9 +8,8 @@ namespace DapperTesting.Interfaces
     public interface ICar
     {
         Task<IEnumerable<CarDTO>> GetCars();
-        Task<int> AddCar(CarDTO CarServices);
+        Task AddCar(CarDTO CarServices);
         Task EditCar(CarDTO CarServices);
-        Task DeleteCar(int CarId, CarDTO CarServices);
-        Task<CarDTO> GetOneCar(int CarId);
+        Task DeleteCar(int CarId);
     }
 }

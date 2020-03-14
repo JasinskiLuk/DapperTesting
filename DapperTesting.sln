@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.DbServices", 
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.ConsoleApp", "DapperTestingConsole\DapperTesting.ConsoleApp.csproj", "{6AA758F9-BB03-4698-80A2-E1A652E5654C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperTesting.WebApp", "DapperTesting.WebApp\DapperTesting.WebApp.csproj", "{59E686FA-900F-4EE4-88BD-FE8E9E2BCF00}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.WebApp", "DapperTesting.WebApp\DapperTesting.WebApp.csproj", "{59E686FA-900F-4EE4-88BD-FE8E9E2BCF00}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
