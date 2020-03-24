@@ -23,6 +23,7 @@ namespace DapperTesting.WebApp
             services.AddControllersWithViews();
             services.AddScoped<IDateTest, DbDateTestService>();
             services.AddScoped<ICar, DbCarServices>();
+            services.AddScoped<IAttachment, DbAttachmentServices>();
             services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 

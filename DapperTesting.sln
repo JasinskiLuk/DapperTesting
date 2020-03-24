@@ -5,8 +5,6 @@ VisualStudioVersion = 16.0.29728.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.Interfaces", "DapperTesting.Interfaces\DapperTesting.Interfaces.csproj", "{1FD1CAB0-7D17-4774-9058-669AEEA4B015}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.Models", "DapperTesting.Models\DapperTesting.Models.csproj", "{F39FD801-3230-45A4-9FC8-ACAF898F41EF}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.DTOs", "DapperTesting.DTOs\DapperTesting.DTOs.csproj", "{CEAFEC73-523E-4598-98B7-375693C93D0B}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.DbServices", "DapperTesting.DbServices\DapperTesting.DbServices.csproj", "{253141ED-6DD0-4092-A6D5-9ED1D08711EF}"
@@ -25,10 +23,6 @@ Global
 		{1FD1CAB0-7D17-4774-9058-669AEEA4B015}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{1FD1CAB0-7D17-4774-9058-669AEEA4B015}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{1FD1CAB0-7D17-4774-9058-669AEEA4B015}.Release|Any CPU.Build.0 = Release|Any CPU
-		{F39FD801-3230-45A4-9FC8-ACAF898F41EF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{F39FD801-3230-45A4-9FC8-ACAF898F41EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{F39FD801-3230-45A4-9FC8-ACAF898F41EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{F39FD801-3230-45A4-9FC8-ACAF898F41EF}.Release|Any CPU.Build.0 = Release|Any CPU
 		{CEAFEC73-523E-4598-98B7-375693C93D0B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{CEAFEC73-523E-4598-98B7-375693C93D0B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CEAFEC73-523E-4598-98B7-375693C93D0B}.Release|Any CPU.ActiveCfg = Release|Any CPU

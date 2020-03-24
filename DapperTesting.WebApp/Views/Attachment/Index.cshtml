@@ -1,0 +1,31 @@
+﻿
+@model DapperTesting.DTOs.AttachmentDTO
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div style="margin: 35px">
+
+    <h2>UploadFile</h2>
+
+    <form method="post" enctype="multipart/form-data" asp-controller="Attachment" asp-action="AddAttachment">
+        <div class="form-group">
+            <div class="col-md-10">
+                <p>Upload one or more files using this form:</p>
+                <input asp-for="OriginalFileName" type="file" name="files" multiple />
+                <input asp-for="FileName" />
+                <input asp-for="FilePath" />
+                <input asp-for="DateAdded" />
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <input type="submit" value="Upload" />
+            </div>
+        </div>
+    </form>
+
+</div>
