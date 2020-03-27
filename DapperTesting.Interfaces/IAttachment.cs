@@ -8,6 +8,6 @@ namespace DapperTesting.Interfaces
 {
     public interface IAttachment
     {
-        Task AddAttachment(AttachmentDTO attachment);
+        Task<int> AddAttachment(AttachmentDTO attachment);
     }
 }

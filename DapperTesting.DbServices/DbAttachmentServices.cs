@@ -16,12 +16,22 @@ namespace DapperTesting.DbServices
         {
         }
 
-        public async Task AddAttachment(AttachmentDTO attachment)
+        public async Task<int> AddAttachment(AttachmentDTO attachment)
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
-            await conn.QueryAsync(@"INSERT INTO [Attachments]([FileName], [OriginalFileName], [FilePath], [DateAdded])
-                                    VALUES(@FileName, @OriginalFileName, @FilePath, @DateAdded)",
+            var i = await conn.ExecuteScalarAsync<int>(@"INSERT INTO [Attachments](
+                                                            [FileName], 
+                                                            [OriginalFileName], 
+                                                            [FilePath], 
+                                                            [DateAdded])
+                                                        VALUES(
+                                                            @FileName, 
+                                                            @OriginalFileName, 
+                                                            @FilePath, 
+                                                            @DateAdded)
+                                                        SELECT SCOPE_IDENTITY()",
                 new { attachment.FileName, attachment.OriginalFileName, attachment.FilePath, attachment.DateAdded });
+            return i;
         }
     }
 }

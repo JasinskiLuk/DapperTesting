@@ -1,10 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using DapperTesting.DTOs;
+﻿using DapperTesting.DTOs;
 using DapperTesting.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Threading.Tasks;
 
 namespace DapperTesting.WebApp.Controllers
 {
@@ -20,10 +18,10 @@ namespace DapperTesting.WebApp.Controllers
             return View();
         }
 
-        public async Task<IActionResult> AddAttachment(AttachmentDTO attachment)
+        public async Task<IActionResult> AddAttachment(AttachmentDTO attachment, IFormFile files)
         {
-            await _attachment.AddAttachment(attachment);
-            return Ok();
+            var i = await _attachment.AddAttachment(attachment);
+            return Ok(i);
         }
     }
 }
