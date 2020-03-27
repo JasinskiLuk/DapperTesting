@@ -7,7 +7,7 @@ namespace DapperTesting.DbServices
         private protected readonly string _connectionString;
         public DbBaseService(IConfiguration configuration)
         {
-            _connectionString = configuration.GetSection("ConnectionString:TestingConnection").Value;
+            _connectionString = configuration.GetConnectionString("TestingConnection");
         }
     }
 }
