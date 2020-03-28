@@ -23,11 +23,25 @@
             $('#myModal').modal('show');
         }
         function adAtt(e) {
+            var input = $('#files')[0].files[0];
+            var files = new FormData();
+            files.append('files', input);
+            var attachment = $('#addForm').serialize();
             $.ajax({
                 url: '/Attachment/AddAttachment',
                 type: 'POST',
-                data: $('#addForm').serialize(),   //your form name.it takes all the values of model               
-                dataType: 'json'
+                data: attachment,
+                success: function (data, textStatus, jqXHR) {
+                    $.ajax({
+                        url: '/Attachment/AddFile',
+                        type: 'POST',
+                        processData: false,
+                        contentType: false,
+                        data: files,
+                        dataType: 'json'
+                    }),
+                    console.log(data, textStatus, jqXHR)
+                }
             })
         }
     </script>
