@@ -1,3 +1,4 @@
+using Dapper;
 using DapperTesting.DbServices;
 using DapperTesting.Interfaces;
 using Microsoft.AspNetCore.Builder;
@@ -5,6 +6,8 @@ using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using System;
+using System.Data;
 
 namespace DapperTesting.WebApp
 {
@@ -30,6 +33,14 @@ namespace DapperTesting.WebApp
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(AppDomain.CurrentDomain.BaseDirectory)
+                .AddJsonFile("appsettings.json", false)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", optional: false)
+                .Build();
+
+            SqlMapper.AddTypeMap(typeof(DateTime), DbType.DateTime2);
+
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

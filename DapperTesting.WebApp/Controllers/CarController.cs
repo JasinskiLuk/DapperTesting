@@ -2,7 +2,6 @@
 using DapperTesting.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
-using System.Dynamic;
 using System.Threading.Tasks;
 
 namespace DapperTesting.WebApp.Controllers

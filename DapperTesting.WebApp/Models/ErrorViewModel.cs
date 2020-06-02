@@ -1,5 +1,3 @@
-using System;
-
 namespace DapperTesting.WebApp.Models
 {
     public class ErrorViewModel

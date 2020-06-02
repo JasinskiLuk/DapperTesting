@@ -3,10 +3,8 @@ using DapperTesting.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
-using System.Threading.Tasks;
 using System.IO;
-using System.Collections.Generic;
-using System.Linq;
+using System.Threading.Tasks;
 
 namespace DapperTesting.WebApp.Controllers
 {
@@ -26,7 +24,7 @@ namespace DapperTesting.WebApp.Controllers
 
         public async Task<IActionResult> AddFile(IFormFile files)
         {
-            string path = _configuration.GetConnectionString("Path")+files.FileName;
+            string path = _configuration.GetConnectionString("Path") + files.FileName;
             using (var stream = new FileStream(path, FileMode.Create))
             {
                 await files.CopyToAsync(stream);

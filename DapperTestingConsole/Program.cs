@@ -19,7 +19,7 @@ namespace DapperTesting.ConsoleApp
             Console.WriteLine("Write car ID:");
             int carId = Convert.ToInt16(Console.ReadLine());
 
-            var auto = await services.GetOneCar(carId);
+            var auto = await services.GetCar(carId);
             Console.WriteLine(auto.Id + ": " + auto.Name + " -> " + auto.Price);
         }
 
