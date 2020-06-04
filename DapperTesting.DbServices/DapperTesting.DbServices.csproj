@@ -12,7 +12,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\DapperTesting.Interfaces\DapperTesting.Interfaces.csproj" />
+    <ProjectReference Include="..\DapperTesting.IServices\DapperTesting.IServices.csproj" />
   </ItemGroup>
 
 </Project>

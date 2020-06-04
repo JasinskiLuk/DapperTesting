@@ -30,3 +30,12 @@ CREATE TABLE [testing].[Cars]
     [Price] MONEY,
     [DateId] INT NOT NULL FOREIGN KEY REFERENCES [testing].[DateTest]([Id])
 );
+
+CREATE TABLE [testing].[Attachments]
+(
+    [Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+    [FileName] NVARCHAR(50),
+    [OriginalFileName] NVARCHAR(50) NOT NULL,
+    [FilePath] NVARCHAR(100),
+    [DateAdded] DATETIME2
+);

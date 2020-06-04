@@ -9,4 +9,15 @@
 
         public DateTestDTO Dates { get; set; }
     }
+
+    public class NullCarDTO : CarDTO
+    {
+        public NullCarDTO()
+        {
+            Id = -1;
+            Name = "Empty";
+            Price = -1;
+            Dates = new NullDateTestDTO();
+        }
+    }
 }

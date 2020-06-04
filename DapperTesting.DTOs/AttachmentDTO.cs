@@ -10,4 +10,16 @@ namespace DapperTesting.DTOs
         public string FilePath { get; set; }
         public DateTime DateAdded { get; set; }
     }
+
+    public class NullAttachmentDTO : AttachmentDTO
+    {
+        public NullAttachmentDTO()
+        {
+            Id = -1;
+            FileName = "Empty";
+            OriginalFileName = "Empty";
+            FilePath = "Empty";
+            DateAdded = DateTime.MinValue;
+        }
+    }
 }

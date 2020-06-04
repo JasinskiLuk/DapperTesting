@@ -1,10 +1,11 @@
 ﻿using DapperTesting.DTOs;
+using DapperTesting.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DapperTesting.Interfaces
+namespace DapperTesting.IServices
 {
-    public interface ICar
+    public interface ICarService : ICreateUpdateService<CarDTO>, IDeleteService, IReadService<CarDTO>, IReadCollectionService<CarDTO>
     {
         Task<CarDTO> GetCar(int Id);
         Task<IEnumerable<CarDTO>> GetCars();

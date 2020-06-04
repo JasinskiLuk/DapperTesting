@@ -1,5 +1,5 @@
 ﻿using DapperTesting.DTOs;
-using DapperTesting.Interfaces;
+using DapperTesting.IServices;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
@@ -10,9 +10,9 @@ namespace DapperTesting.WebApp.Controllers
 {
     public class AttachmentController : Controller
     {
-        private readonly IAttachment _attachment;
+        private readonly IAttachmentService _attachment;
         private readonly IConfiguration _configuration;
-        public AttachmentController(IAttachment attachment, IConfiguration configuration)
+        public AttachmentController(IAttachmentService attachment, IConfiguration configuration)
         {
             _attachment = attachment;
             _configuration = configuration;

@@ -1,5 +1,5 @@
 ﻿using DapperTesting.DTOs;
-using DapperTesting.Interfaces;
+using DapperTesting.IServices;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
@@ -7,8 +7,8 @@ namespace DapperTesting.WebApp.Controllers
 {
     public class DateTestController : Controller
     {
-        private readonly IDateTest _dateTest;
-        public DateTestController(IDateTest dateTest)
+        private readonly IDateTestService _dateTest;
+        public DateTestController(IDateTestService dateTest)
         {
             _dateTest = dateTest;
         }

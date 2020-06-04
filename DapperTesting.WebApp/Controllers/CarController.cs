@@ -1,5 +1,5 @@
 ﻿using DapperTesting.DTOs;
-using DapperTesting.Interfaces;
+using DapperTesting.IServices;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
@@ -8,9 +8,9 @@ namespace DapperTesting.WebApp.Controllers
 {
     public class CarController : Controller
     {
-        private readonly ICar _car;
-        private readonly IDateTest _dateTest;
-        public CarController(ICar car, IDateTest dateTest)
+        private readonly ICarService _car;
+        private readonly IDateTestService _dateTest;
+        public CarController(ICarService car, IDateTestService dateTest)
         {
             _car = car;
             _dateTest = dateTest;

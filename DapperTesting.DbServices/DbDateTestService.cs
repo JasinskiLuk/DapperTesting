@@ -1,6 +1,6 @@
 using Dapper;
 using DapperTesting.DTOs;
-using DapperTesting.Interfaces;
+using DapperTesting.IServices;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DapperTesting.DbServices
 {
-    public class DbDateTestService : DbBaseService, IDateTest
+    public class DbDateTestService : DbBaseService, IDateTestService
     {
         public DbDateTestService(IConfiguration configuration) : base(configuration)
         {
@@ -19,7 +19,7 @@ namespace DapperTesting.DbServices
             using SqlConnection conn = new SqlConnection(_connectionString);
             await conn.QueryAsync(@"INSERT INTO [testing].[DateTest]([Date1], [DateTime1], [DateTime2])
                                     VALUES(@Date1, @DateTime1, @DateTime2)",
-                                        new { DTO.Date1, DTO.DateTime1, DTO.DateTime2 });
+                                    new { DTO.Date1, DTO.DateTime1, DTO.DateTime2 });
         }
 
         public async Task EditDate(DateTestDTO DTO)
@@ -47,6 +47,31 @@ namespace DapperTesting.DbServices
             await conn.ExecuteAsync(@"DELETE FROM [testing].[DateTest]
                                       WHERE [Id] = @Id",
                                       new { Id });
+        }
+
+        public Task<int> Create(DateTestDTO model)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<int> Update(DateTestDTO model)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Delete(int Id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<DateTestDTO> Get(int Id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<IEnumerable<DateTestDTO>> Get()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

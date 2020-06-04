@@ -1,6 +1,6 @@
 ﻿using Dapper;
 using DapperTesting.DTOs;
-using DapperTesting.Interfaces;
+using DapperTesting.IServices;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Data.SqlClient;
@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace DapperTesting.DbServices
 {
-    public class DbCarServices : DbBaseService, ICar
+    public class DbCarServices : DbBaseService, ICarService
     {
         public DbCarServices(IConfiguration configuration) : base(configuration)
         {
@@ -19,6 +19,16 @@ namespace DapperTesting.DbServices
             await conn.QueryAsync(@"INSERT INTO [testing].[Cars]([Name], [Price], [DateId])
                                     VALUES(@Name, @Price, @DateId)",
                 new { CarServices.Name, CarServices.Price, CarServices.DateId });
+        }
+
+        public Task<int> Create(CarDTO model)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task Delete(int Id)
+        {
+            throw new System.NotImplementedException();
         }
 
         public async Task DeleteCar(int Id)
@@ -38,6 +48,16 @@ namespace DapperTesting.DbServices
                                     new { CarServices.Id, CarServices.Name, CarServices.Price, CarServices.DateId });
         }
 
+        public Task<CarDTO> Get(int Id)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public Task<IEnumerable<CarDTO>> Get()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public async Task<CarDTO> GetCar(int Id)
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
@@ -52,6 +72,11 @@ namespace DapperTesting.DbServices
             using SqlConnection conn = new SqlConnection(_connectionString);
             return await conn.QueryAsync<CarDTO>(@"SELECT [Id], [Name], [Price], [DateId]
                                                    FROM [testing].[Cars]");
+        }
+
+        public Task<int> Update(CarDTO model)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

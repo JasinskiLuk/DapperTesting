@@ -1,6 +1,6 @@
 using Dapper;
 using DapperTesting.DbServices;
-using DapperTesting.Interfaces;
+using DapperTesting.IServices;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
@@ -24,9 +24,9 @@ namespace DapperTesting.WebApp
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddControllersWithViews();
-            services.AddScoped<IDateTest, DbDateTestService>();
-            services.AddScoped<ICar, DbCarServices>();
-            services.AddScoped<IAttachment, DbAttachmentServices>();
+            services.AddScoped<IDateTestService, DbDateTestService>();
+            services.AddScoped<ICarService, DbCarServices>();
+            services.AddScoped<IAttachmentService, DbAttachmentServices>();
             services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 

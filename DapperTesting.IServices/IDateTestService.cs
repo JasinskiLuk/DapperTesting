@@ -1,10 +1,11 @@
 ﻿using DapperTesting.DTOs;
+using DapperTesting.Interfaces;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace DapperTesting.Interfaces
+namespace DapperTesting.IServices
 {
-    public interface IDateTest
+    public interface IDateTestService : ICreateUpdateService<DateTestDTO>, IDeleteService, IReadService<DateTestDTO>, IReadCollectionService<DateTestDTO>
     {
         Task AddDate(DateTestDTO DTO);
         Task<IEnumerable<DateTestDTO>> GetDate();
