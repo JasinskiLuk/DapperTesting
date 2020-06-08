@@ -13,9 +13,9 @@ namespace DapperTesting.WebApp.Controllers
             _dateTest = dateTest;
         }
 
-        public async Task<IActionResult> DateTest()
+        public async Task<IActionResult> Index()
         {
-            return View(await _dateTest.GetDate());
+            return View(await _dateTest.Get());
         }
 
         public IActionResult AddEditDate(DateTestDTO model)
@@ -24,20 +24,20 @@ namespace DapperTesting.WebApp.Controllers
         }
         public async Task<IActionResult> AddDate(DateTestDTO model)
         {
-            await _dateTest.AddDate(model);
-            return RedirectToAction("DateTest");
-        }
-
-        public async Task<IActionResult> DeleteDate(int Id)
-        {
-            await _dateTest.DeleteDate(Id);
-            return RedirectToAction("DateTest");
+            await _dateTest.Create(model);
+            return RedirectToAction("Index");
         }
 
         public async Task<IActionResult> EditDate(DateTestDTO model)
         {
-            await _dateTest.EditDate(model);
-            return RedirectToAction("DateTest");
+            await _dateTest.Update(model);
+            return RedirectToAction("Index");
+        }
+
+        public async Task<IActionResult> DeleteDate(int Id)
+        {
+            await _dateTest.Delete(Id);
+            return RedirectToAction("Index");
         }
     }
 }

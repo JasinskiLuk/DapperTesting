@@ -22,7 +22,8 @@
         function openModal() {
             $('#myModal').modal('show');
         }
-        function adAtt(e) {
+
+        function addAtt() {
             var input = $('#files')[0].files[0];
             var files = new FormData();
             files.append('files', input);

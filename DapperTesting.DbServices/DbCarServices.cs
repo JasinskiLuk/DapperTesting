@@ -13,52 +13,34 @@ namespace DapperTesting.DbServices
         public DbCarServices(IConfiguration configuration) : base(configuration)
         {
         }
-        public async Task AddCar(CarDTO CarServices)
+
+        public async Task<int> Create(CarDTO DTO)
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
-            await conn.QueryAsync(@"INSERT INTO [testing].[Cars]([Name], [Price], [DateId])
-                                    VALUES(@Name, @Price, @DateId)",
-                new { CarServices.Name, CarServices.Price, CarServices.DateId });
+            return await conn.ExecuteScalarAsync<int>(@"INSERT INTO [testing].[Cars]([Name], [Price], [DateId])
+                                                        VALUES(@Name, @Price, @DateId)",
+                                                        new { DTO.Name, DTO.Price, DTO.DateId });
         }
 
-        public Task<int> Create(CarDTO model)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task Delete(int Id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public async Task DeleteCar(int Id)
+        public async Task<int> Update(CarDTO DTO)
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
-            await conn.ExecuteAsync(@"DELETE FROM [Cars] WHERE [Id] = @Id", new { Id });
+            return await conn.ExecuteScalarAsync<int>(@"UPDATE [testing].[Cars]
+                                                        SET [Name] = @Name,
+                                                            [Price] = @Price,
+                                                            [DateId] = @DateId
+                                                        WHERE [Id] = @Id",
+                                                        new { DTO.Id, DTO.Name, DTO.Price, DTO.DateId });
         }
 
-        public async Task EditCar(CarDTO CarServices)
+        public async Task Delete(int Id)
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
-            await conn.QueryAsync(@"UPDATE [testing].[Cars]
-                                    SET [Name] = @Name,
-                                        [Price] = @Price,
-                                        [DateId] = @DateId
-                                    WHERE [Id] = @Id",
-                                    new { CarServices.Id, CarServices.Name, CarServices.Price, CarServices.DateId });
+            await conn.ExecuteScalarAsync(@"DELETE FROM [testing].[Cars]
+                                            WHERE [Id] = @Id", new { Id });
         }
 
-        public Task<CarDTO> Get(int Id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IEnumerable<CarDTO>> Get()
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public async Task<CarDTO> GetCar(int Id)
+        public async Task<CarDTO> Get(int Id)
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
             return await conn.QueryFirstOrDefaultAsync<CarDTO>(@"SELECT [Id], [Name], [Price], [DateId]
@@ -67,16 +49,11 @@ namespace DapperTesting.DbServices
                                                                  new { Id });
         }
 
-        public async Task<IEnumerable<CarDTO>> GetCars()
+        public async Task<IEnumerable<CarDTO>> Get()
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
             return await conn.QueryAsync<CarDTO>(@"SELECT [Id], [Name], [Price], [DateId]
                                                    FROM [testing].[Cars]");
-        }
-
-        public Task<int> Update(CarDTO model)
-        {
-            throw new System.NotImplementedException();
         }
     }
 }

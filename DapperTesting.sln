@@ -9,13 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.DTOs", "Dappe
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.DbServices", "DapperTesting.DbServices\DapperTesting.DbServices.csproj", "{253141ED-6DD0-4092-A6D5-9ED1D08711EF}"
 EndProject
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.ConsoleApp", "DapperTesting.Console\DapperTesting.ConsoleApp.csproj", "{6AA758F9-BB03-4698-80A2-E1A652E5654C}"
-EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.WebApp", "DapperTesting.WebApp\DapperTesting.WebApp.csproj", "{59E686FA-900F-4EE4-88BD-FE8E9E2BCF00}"
 EndProject
 Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DapperTesting.SQL", "DapperTesting.SQL\DapperTesting.SQL.sqlproj", "{15AB7787-5501-4111-A8F7-3ADEE2AA0ACF}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperTesting.IServices", "DapperTesting.IServices\DapperTesting.IServices.csproj", "{696A8D61-A1BA-4650-9186-E22E0E785939}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.IServices", "DapperTesting.IServices\DapperTesting.IServices.csproj", "{696A8D61-A1BA-4650-9186-E22E0E785939}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,10 +33,6 @@ Global
 		{253141ED-6DD0-4092-A6D5-9ED1D08711EF}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{253141ED-6DD0-4092-A6D5-9ED1D08711EF}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{253141ED-6DD0-4092-A6D5-9ED1D08711EF}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6AA758F9-BB03-4698-80A2-E1A652E5654C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6AA758F9-BB03-4698-80A2-E1A652E5654C}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6AA758F9-BB03-4698-80A2-E1A652E5654C}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6AA758F9-BB03-4698-80A2-E1A652E5654C}.Release|Any CPU.Build.0 = Release|Any CPU
 		{59E686FA-900F-4EE4-88BD-FE8E9E2BCF00}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
 		{59E686FA-900F-4EE4-88BD-FE8E9E2BCF00}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{59E686FA-900F-4EE4-88BD-FE8E9E2BCF00}.Release|Any CPU.ActiveCfg = Release|Any CPU

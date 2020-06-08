@@ -15,34 +15,34 @@ namespace DapperTesting.WebApp.Controllers
             _car = car;
             _dateTest = dateTest;
         }
-        public async Task<IActionResult> CarList()
+        public async Task<IActionResult> Index()
         {
-            return View(await _car.GetCars());
+            return View(await _car.Get());
         }
 
         public async Task<IActionResult> AddEditCar(CarDTO model)
         {
-            ViewData["DateList"] = await _dateTest.GetDate();
-            ViewData["CarList"] = await _car.GetCars();
-            ViewData["DateList2"] = new SelectList(await _dateTest.GetDate());
+            ViewData["DateList"] = await _dateTest.Get();
+            ViewData["CarList"] = await _car.Get();
+            ViewData["DateList2"] = new SelectList(await _dateTest.Get());
             return View(model);
         }
-        public async Task<IActionResult> AddCar(CarDTO model)
+        public async Task<IActionResult> Create(CarDTO model)
         {
-            await _car.AddCar(model);
-            return RedirectToAction("CarList");
+            await _car.Create(model);
+            return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> DeleteCar(int Id)
+        public async Task<IActionResult> Update(CarDTO model)
         {
-            await _car.DeleteCar(Id);
-            return RedirectToAction("CarList");
+            await _car.Update(model);
+            return RedirectToAction("Index");
         }
 
-        public async Task<IActionResult> EditCar(CarDTO model)
+        public async Task<IActionResult> Delete(int Id)
         {
-            await _car.EditCar(model);
-            return RedirectToAction("CarList");
+            await _car.Delete(Id);
+            return RedirectToAction("Index");
         }
     }
 }

@@ -43,8 +43,8 @@
                 @Html.DisplayFor(modelItem => item.DateTime2)
             </td>
             <td>
-                @Html.ActionLink("Edit", "AddEditDate", item) |
-                @Html.ActionLink("Delete", "DeleteDate", new { id=item.Id })
+                @Html.ActionLink("Update", "AddEditDate", item) |
+                @Html.ActionLink("Delete", "Delete", new { id=item.Id })
             </td>
         </tr>
 }

@@ -32,10 +32,10 @@ namespace DapperTesting.WebApp.Controllers
             return Ok();
         }
 
-        public async Task<IActionResult> AddAttachment(AttachmentDTO attachment)
+        public async Task<IActionResult> Create(AttachmentDTO attachment)
         {
-            var i = await _attachment.AddAttachment(attachment);
-            return Ok(i);
+            var Id = await _attachment.Create(attachment);
+            return Ok(Id);
         }
     }
 }

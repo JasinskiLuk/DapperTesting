@@ -1,22 +1,20 @@
 ﻿@model DapperTesting.DTOs.DateTestDTO
 
 @{
-    string title;
+    string action = "Update";
     if (Model.Id <= 0)
     {
-        title = "AddDate";
+        action = "Create";
     }
-    else
-        title = "EditDate";
 
-    ViewData["Title"] = title;
+    ViewData["Title"] = action;
 }
 
 <h4>DateTestDTO</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
-        <form asp-action=@title>
+        <form asp-action=@action>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group" hidden="hidden">
                 <label asp-for="Id" class="control-label"></label>
@@ -39,14 +37,14 @@
                 <span asp-validation-for="DateTime2" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value=@title class="btn btn-primary" />
+                <input type="submit" value=@action class="btn btn-primary" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a asp-action="DateTest">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

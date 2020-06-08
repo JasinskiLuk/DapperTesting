@@ -14,34 +14,26 @@ namespace DapperTesting.DbServices
         {
         }
 
-        public async Task AddDate(DateTestDTO DTO)
+        public async Task<int> Create(DateTestDTO DTO)
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
-            await conn.QueryAsync(@"INSERT INTO [testing].[DateTest]([Date1], [DateTime1], [DateTime2])
-                                    VALUES(@Date1, @DateTime1, @DateTime2)",
-                                    new { DTO.Date1, DTO.DateTime1, DTO.DateTime2 });
+            return await conn.ExecuteScalarAsync<int>(@"INSERT INTO [testing].[DateTest]([Date1], [DateTime1], [DateTime2])
+                                                        VALUES(@Date1, @DateTime1, @DateTime2)",
+                                                        new { DTO.Date1, DTO.DateTime1, DTO.DateTime2 });
         }
 
-        public async Task EditDate(DateTestDTO DTO)
+        public async Task<int> Update(DateTestDTO DTO)
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
-            await conn.QueryAsync(@"UPDATE [testing].[DateTest]
-                                    SET [Date1] = @Date1,
-                                        [DateTime1] = @DateTime1,
-                                        [DateTime2] = @DateTime2
-                                    WHERE [Id] = @Id",
-                                    new { DTO.Id, DTO.Date1, DTO.DateTime1, DTO.DateTime2 });
+            return await conn.ExecuteScalarAsync<int>(@"UPDATE [testing].[DateTest]
+                                                        SET [Date1] = @Date1,
+                                                            [DateTime1] = @DateTime1,
+                                                            [DateTime2] = @DateTime2
+                                                        WHERE [Id] = @Id",
+                                                        new { DTO.Id, DTO.Date1, DTO.DateTime1, DTO.DateTime2 });
         }
 
-        public async Task<IEnumerable<DateTestDTO>> GetDate()
-        {
-            using SqlConnection conn = new SqlConnection(_connectionString);
-            var model = await conn.QueryAsync<DateTestDTO>(@"SELECT [Id], [Date1], [DateTime1], [DateTime2]
-                                                             FROM [testing].[DateTest]");
-            return model;
-        }
-
-        public async Task DeleteDate(int Id)
+        public async Task Delete(int Id)
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
             await conn.ExecuteAsync(@"DELETE FROM [testing].[DateTest]
@@ -49,29 +41,21 @@ namespace DapperTesting.DbServices
                                       new { Id });
         }
 
-        public Task<int> Create(DateTestDTO model)
+        public async Task<DateTestDTO> Get(int Id)
         {
-            throw new System.NotImplementedException();
+            using SqlConnection conn = new SqlConnection(_connectionString);
+            var model = await conn.QueryFirstOrDefaultAsync<DateTestDTO>(@"SELECT [Id], [Date1], [DateTime1], [DateTime2]
+                                                             FROM [testing].[DateTest]
+                                                             WHERE [Id] = @Id",
+                                                             new { Id });
+            return model ?? new NullDateTestDTO();
         }
 
-        public Task<int> Update(DateTestDTO model)
+        public async Task<IEnumerable<DateTestDTO>> Get()
         {
-            throw new System.NotImplementedException();
-        }
-
-        public Task Delete(int Id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<DateTestDTO> Get(int Id)
-        {
-            throw new System.NotImplementedException();
-        }
-
-        public Task<IEnumerable<DateTestDTO>> Get()
-        {
-            throw new System.NotImplementedException();
+            using SqlConnection conn = new SqlConnection(_connectionString);
+            return await conn.QueryAsync<DateTestDTO>(@"SELECT [Id], [Date1], [DateTime1], [DateTime2]
+                                                             FROM [testing].[DateTest]");
         }
     }
 }

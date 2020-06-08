@@ -5,15 +5,12 @@
     IEnumerable<DateTestDTO> dateList = ViewData["DateList"] as IEnumerable<DateTestDTO>;
     IEnumerable<CarDTO> carList = ViewData["CarList"] as IEnumerable<CarDTO>;
     IEnumerable<SelectListItem> listItems = ViewData["DateList2"] as IEnumerable<SelectListItem>;
-    
-    string title;
+
+    string action = "Update";
     if (Model.Id <= 0)
+        action = "Create";
 
-        title = "AddCar";
-    else
-        title = "EditCar";
-
-    ViewData["Title"] = title;
+    ViewData["Title"] = action;
 }
 
 <h1>AddEditCar</h1>
@@ -24,7 +21,7 @@
 
 <div class="row">
     <div class="col-md-4">
-        <form asp-action=@title>
+        <form asp-action=@action>
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group" hidden="hidden">
                 <label asp-for="Id" class="control-label"></label>
@@ -49,38 +46,7 @@
                 <span asp-validation-for="DateId" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value= @title class="btn btn-primary" />
-            </div>
-        </form>
-    </div>
-
-    <div class="col-md-4">
-        <form asp-action=@title>
-            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
-            <div class="form-group" hidden="hidden">
-                <label asp-for="Id" class="control-label"></label>
-                <input asp-for="@dateList" class="form-control" />
-                <span asp-validation-for="Id" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="Price" class="control-label"></label>
-                <input asp-for="Price" class="form-control" />
-                <span asp-validation-for="Price" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="DateId" class="control-label"></label>
-                <select asp-for="DateId" asp-items="@(new SelectList(dateList, "Id", "Date1"))" class="control-label">
-                    <option value="">Pick one</option>
-                </select>
-                <span asp-validation-for="DateId" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <input type="submit" value= @title class="btn btn-primary" />
+                <input type="submit" value= @action class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -88,7 +54,7 @@
 
 
 <div>
-    <a asp-action="CarList">Back to List</a>
+    <a asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {
