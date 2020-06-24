@@ -15,6 +15,8 @@ Project("{00D1A9C2-B5F0-4AF3-8072-F6C62B433612}") = "DapperTesting.SQL", "Dapper
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "DapperTesting.IServices", "DapperTesting.IServices\DapperTesting.IServices.csproj", "{696A8D61-A1BA-4650-9186-E22E0E785939}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DapperTesting.Api", "DapperTesting.Api\DapperTesting.Api.csproj", "{DE6BBAA1-6A5D-40EC-8616-4F573C372284}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -47,6 +49,10 @@ Global
 		{696A8D61-A1BA-4650-9186-E22E0E785939}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{696A8D61-A1BA-4650-9186-E22E0E785939}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{696A8D61-A1BA-4650-9186-E22E0E785939}.Release|Any CPU.Build.0 = Release|Any CPU
+		{DE6BBAA1-6A5D-40EC-8616-4F573C372284}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DE6BBAA1-6A5D-40EC-8616-4F573C372284}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DE6BBAA1-6A5D-40EC-8616-4F573C372284}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DE6BBAA1-6A5D-40EC-8616-4F573C372284}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
