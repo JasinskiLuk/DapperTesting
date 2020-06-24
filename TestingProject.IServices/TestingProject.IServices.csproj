@@ -1,0 +1,12 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard2.1</TargetFramework>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\TestingProject.DTOs\TestingProject.DTOs.csproj" />
+    <ProjectReference Include="..\TestingProject.Interfaces\TestingProject.Interfaces.csproj" />
+  </ItemGroup>
+
+</Project>

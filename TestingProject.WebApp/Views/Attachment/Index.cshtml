@@ -1,0 +1,49 @@
+﻿
+@model TestingProject.DTOs.AttachmentDTO
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1>Index</h1>
+
+<div style="margin: 35px">
+
+    <h2>UploadFile</h2>
+
+    <partial name="_AddAttachment" for="@Model" />
+    <a class="btn btn-primary" id="modal1" onclick="openModal();">Modal</a>
+
+</div>
+
+
+@section Scripts{
+    <script>
+        function openModal() {
+            $('#myModal').modal('show');
+        }
+
+        function addAtt() {
+            var input = $('#files')[0].files[0];
+            var files = new FormData();
+            files.append('files', input);
+            var attachment = $('#addForm').serialize();
+            $.ajax({
+                url: '/Attachment/AddAttachment',
+                type: 'POST',
+                data: attachment,
+                success: function (data, textStatus, jqXHR) {
+                    $.ajax({
+                        url: '/Attachment/AddFile',
+                        type: 'POST',
+                        processData: false,
+                        contentType: false,
+                        data: files,
+                        dataType: 'json'
+                    }),
+                    console.log(data, textStatus, jqXHR)
+                }
+            })
+        }
+    </script>
+}
