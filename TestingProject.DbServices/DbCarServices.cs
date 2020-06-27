@@ -43,10 +43,11 @@ namespace TestingProject.DbServices
         public async Task<CarDTO> Get(int Id)
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
-            return await conn.QueryFirstOrDefaultAsync<CarDTO>(@"SELECT [Id], [Name], [Price], [DateId]
+            CarDTO car = await conn.QueryFirstOrDefaultAsync<CarDTO>(@"SELECT [Id], [Name], [Price], [DateId]
                                                                  FROM [testing].[Cars]
                                                                  WHERE [Id] = @Id",
                                                                  new { Id });
+            return car ?? new NullCarDTO();
         }
 
         public async Task<IEnumerable<CarDTO>> Get()

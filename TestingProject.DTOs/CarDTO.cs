@@ -16,7 +16,7 @@
         {
             Id = -1;
             Name = "Empty";
-            Price = -1;
+            Price = 0;
             Dates = new NullDateTestDTO();
         }
     }

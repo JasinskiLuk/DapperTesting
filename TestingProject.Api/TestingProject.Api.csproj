@@ -4,5 +4,10 @@
     <TargetFramework>netcoreapp3.1</TargetFramework>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\TestingProject.DbServices\TestingProject.DbServices.csproj" />
+    <ProjectReference Include="..\TestingProject.IServices\TestingProject.IServices.csproj" />
+  </ItemGroup>
+
 
 </Project>

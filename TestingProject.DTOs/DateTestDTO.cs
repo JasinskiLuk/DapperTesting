@@ -20,7 +20,7 @@ namespace TestingProject.DTOs
             Date1 = DateTime.MinValue;
             DateTime1 = DateTime.MinValue;
             DateTime2 = DateTime.MinValue;
-            Cars = new NullCarDTO();
+            Cars = null;//new NullCarDTO();
         }
     }
 }
