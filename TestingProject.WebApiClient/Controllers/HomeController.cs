@@ -11,6 +11,11 @@ namespace TestingProject.WebApiClient.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly HttpClient _httpClient;
+        public HomeController(HttpClient httpClient)
+        {
+            _httpClient = httpClient;
+        }
         public IActionResult Index()
         {
             return View();
@@ -20,12 +25,22 @@ namespace TestingProject.WebApiClient.Controllers
         {
             var cars = Enumerable.Empty<CarDTO>();
 
-            var client = new HttpClient();
-            var dataTask = await client.GetAsync("https://localhost:5001/api/car");
+            var dataTask = await _httpClient.GetAsync($"car");
             if (dataTask.IsSuccessStatusCode)
                 cars = dataTask.Content.ReadAsAsync<IEnumerable<CarDTO>>().Result;
 
             return View(cars);
+        }
+
+        public async Task<IActionResult> GetSingle(int id)
+        {
+            CarDTO car = null;
+
+            var dataTask = await _httpClient.GetAsync($"car/{id}");
+            if (dataTask.IsSuccessStatusCode)
+                car = dataTask.Content.ReadAsAsync<CarDTO>().Result;
+
+            return View(car);
         }
 
         public IActionResult Privacy()
