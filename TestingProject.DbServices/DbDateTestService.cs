@@ -57,5 +57,11 @@ namespace TestingProject.DbServices
             return await conn.QueryAsync<DateTestDTO>(@"SELECT [Id], [Date1], [DateTime1], [DateTime2]
                                                              FROM [testing].[DateTest]");
         }
+
+        public async Task<bool> CheckIfExists(int Id)
+        {
+            using SqlConnection conn = new SqlConnection(_connectionString);
+            return await conn.ExecuteScalarAsync<bool>(@"SELECT COUNT(1) FROM [testing].[DateTest] WHERE [Id] = @Id", new { Id });
+        }
     }
 }

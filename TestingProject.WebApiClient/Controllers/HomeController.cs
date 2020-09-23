@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Net.Http;
+using System.Net.Http.Formatting;
 using System.Threading.Tasks;
 using TestingProject.DTOs;
 using TestingProject.WebApiClient.Models;
@@ -23,9 +24,9 @@ namespace TestingProject.WebApiClient.Controllers
 
         public async Task<IActionResult> Get()
         {
-            var cars = Enumerable.Empty<CarDTO>();
+            IEnumerable<CarDTO> cars = Enumerable.Empty<CarDTO>();
 
-            var dataTask = await _httpClient.GetAsync($"car");
+            HttpResponseMessage dataTask = await _httpClient.GetAsync($"car");
             if (dataTask.IsSuccessStatusCode)
                 cars = dataTask.Content.ReadAsAsync<IEnumerable<CarDTO>>().Result;
 
@@ -36,11 +37,24 @@ namespace TestingProject.WebApiClient.Controllers
         {
             CarDTO car = null;
 
-            var dataTask = await _httpClient.GetAsync($"car/{id}");
+            HttpResponseMessage dataTask = await _httpClient.GetAsync($"car/{id}");
             if (dataTask.IsSuccessStatusCode)
                 car = dataTask.Content.ReadAsAsync<CarDTO>().Result;
 
             return View(car);
+        }
+
+        public IActionResult Create()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CarDTO DTO)
+        {
+            HttpResponseMessage dataTask = await _httpClient.PostAsJsonAsync<CarDTO>($"car", DTO);
+
+            return RedirectToAction("GetSingle");//, new { id },);
         }
 
         public IActionResult Privacy()

@@ -23,7 +23,7 @@ namespace TestingProject.Api.Controllers
             return Ok(await _carService.Get());
         }
 
-        [HttpGet("{id}")]
+        [HttpGet("{id}", Name = "GetCar")]
         public async Task<ActionResult<CarDTO>> GetCar(int id)
         {
             CarDTO car = await _carService.Get(id);
@@ -31,6 +31,15 @@ namespace TestingProject.Api.Controllers
                 return NotFound();
 
             return Ok(car);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create(CarDTO DTO)
+        {
+            int id = await _carService.Create(DTO);
+
+            //return CreatedAtRoute(nameof(GetCar), new { id }, DTO);
+            return Ok(id);
         }
     }
 }

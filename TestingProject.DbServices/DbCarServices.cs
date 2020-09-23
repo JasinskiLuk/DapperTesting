@@ -18,8 +18,9 @@ namespace TestingProject.DbServices
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
             return await conn.ExecuteScalarAsync<int>(@"INSERT INTO [testing].[Cars]([Name], [Price], [DateId])
-                                                        VALUES(@Name, @Price, @DateId)",
-                                                        new { DTO.Name, DTO.Price, DTO.DateId });
+                                                          OUTPUT INSERTED.[Id]
+                                                          VALUES(@Name, @Price, @DateId)",
+                                                          new { DTO.Name, DTO.Price, DTO.DateId });
         }
 
         public async Task<int> Update(CarDTO DTO)
@@ -55,6 +56,12 @@ namespace TestingProject.DbServices
             using SqlConnection conn = new SqlConnection(_connectionString);
             return await conn.QueryAsync<CarDTO>(@"SELECT [Id], [Name], [Price], [DateId]
                                                    FROM [testing].[Cars]");
+        }
+
+        public async Task<bool> CheckIfExists(int Id)
+        {
+            using SqlConnection conn = new SqlConnection(_connectionString);
+            return await conn.ExecuteScalarAsync<bool>(@"SELECT COUNT(1) FROM [testing].[Cars] WHERE [Id] = @Id", new { Id });
         }
     }
 }
