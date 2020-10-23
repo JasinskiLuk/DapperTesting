@@ -1,7 +1,7 @@
-﻿using TestingProject.WebApp.Models;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using System.Diagnostics;
+using TestingProject.WebApp.Models;
 
 namespace TestingProject.WebApp.Controllers
 {

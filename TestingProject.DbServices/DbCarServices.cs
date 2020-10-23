@@ -1,10 +1,10 @@
 ﻿using Dapper;
-using TestingProject.DTOs;
-using TestingProject.IServices;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using TestingProject.DTOs;
+using TestingProject.IServices;
 
 namespace TestingProject.DbServices
 {
@@ -45,9 +45,9 @@ namespace TestingProject.DbServices
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
             CarDTO car = await conn.QueryFirstOrDefaultAsync<CarDTO>(@"SELECT [Id], [Name], [Price], [DateId]
-                                                                 FROM [testing].[Cars]
-                                                                 WHERE [Id] = @Id",
-                                                                 new { Id });
+                                                                       FROM [testing].[Cars]
+                                                                       WHERE [Id] = @Id",
+                                                                       new { Id });
             return car ?? new NullCarDTO();
         }
 
@@ -61,7 +61,10 @@ namespace TestingProject.DbServices
         public async Task<bool> CheckIfExists(int Id)
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
-            return await conn.ExecuteScalarAsync<bool>(@"SELECT COUNT(1) FROM [testing].[Cars] WHERE [Id] = @Id", new { Id });
+            return await conn.ExecuteScalarAsync<bool>(@"SELECT COUNT(1)
+                                                         FROM [testing].[Cars]
+                                                         WHERE [Id] = @Id",
+                                                         new { Id });
         }
     }
 }

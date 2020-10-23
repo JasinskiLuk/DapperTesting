@@ -1,9 +1,9 @@
 ﻿using Dapper;
-using TestingProject.DTOs;
-using TestingProject.IServices;
 using Microsoft.Extensions.Configuration;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using TestingProject.DTOs;
+using TestingProject.IServices;
 
 namespace TestingProject.DbServices
 {
@@ -27,7 +27,7 @@ namespace TestingProject.DbServices
                                                             @FilePath, 
                                                             @DateAdded)
                                                         SELECT SCOPE_IDENTITY()",
-                new { DTO.FileName, DTO.OriginalFileName, DTO.FilePath, DTO.DateAdded });
+                                                        new { DTO.FileName, DTO.OriginalFileName, DTO.FilePath, DTO.DateAdded });
         }
 
         public Task<int> Update(AttachmentDTO model)

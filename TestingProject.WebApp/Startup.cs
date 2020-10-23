@@ -27,6 +27,7 @@ namespace TestingProject.WebApp
             services.AddScoped<IDateTestService, DbDateTestService>();
             services.AddScoped<ICarService, DbCarServices>();
             services.AddScoped<IAttachmentService, DbAttachmentServices>();
+            services.AddScoped<IParameterService, DbParameterService>();
             services.AddRazorPages().AddRazorRuntimeCompilation();
         }
 

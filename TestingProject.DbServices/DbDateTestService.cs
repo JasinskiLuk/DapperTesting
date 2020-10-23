@@ -1,10 +1,10 @@
 using Dapper;
-using TestingProject.DTOs;
-using TestingProject.IServices;
 using Microsoft.Extensions.Configuration;
 using System.Collections.Generic;
 using System.Data.SqlClient;
 using System.Threading.Tasks;
+using TestingProject.DTOs;
+using TestingProject.IServices;
 
 namespace TestingProject.DbServices
 {
@@ -45,9 +45,9 @@ namespace TestingProject.DbServices
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
             var model = await conn.QueryFirstOrDefaultAsync<DateTestDTO>(@"SELECT [Id], [Date1], [DateTime1], [DateTime2]
-                                                             FROM [testing].[DateTest]
-                                                             WHERE [Id] = @Id",
-                                                             new { Id });
+                                                                           FROM [testing].[DateTest]
+                                                                           WHERE [Id] = @Id",
+                                                                           new { Id });
             return model ?? new NullDateTestDTO();
         }
 
@@ -55,13 +55,16 @@ namespace TestingProject.DbServices
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
             return await conn.QueryAsync<DateTestDTO>(@"SELECT [Id], [Date1], [DateTime1], [DateTime2]
-                                                             FROM [testing].[DateTest]");
+                                                        FROM [testing].[DateTest]");
         }
 
         public async Task<bool> CheckIfExists(int Id)
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
-            return await conn.ExecuteScalarAsync<bool>(@"SELECT COUNT(1) FROM [testing].[DateTest] WHERE [Id] = @Id", new { Id });
+            return await conn.ExecuteScalarAsync<bool>(@"SELECT COUNT(1)
+                                                         FROM [testing].[DateTest]
+                                                         WHERE [Id] = @Id",
+                                                         new { Id });
         }
     }
 }

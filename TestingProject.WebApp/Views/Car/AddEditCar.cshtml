@@ -20,8 +20,8 @@
 
 
 <div class="row">
-    <div class="col-md-4">
-        <form asp-action=@action>
+    <div class="col-md-6">
+        <form id="base" onsubmit="accept(); return false;" method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group" hidden="hidden">
                 <label asp-for="Id" class="control-label"></label>
@@ -45,8 +45,15 @@
                 </select>
                 <span asp-validation-for="DateId" class="text-danger"></span>
             </div>
+
+            <div id="vue">
+                <div v-for="param in parameters">
+                    <label>{{param}}</label>
+                </div>
+            </div>
+
             <div class="form-group">
-                <input type="submit" value= @action class="btn btn-primary" />
+                <input type="submit" form="base" value= @action class="btn btn-primary" />
             </div>
         </form>
     </div>
@@ -59,4 +66,66 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+
+    <script>
+        var vue = new Vue({
+            el: '#vue',
+            data: {
+                parameters: []
+            },
+            mounted() {
+                this.loadData()
+            },
+            methods: {
+                loadData() {
+                    axios({
+                        method: 'get',
+                        url: '/Parameter/Get',
+                    })
+                    .then(response => this.parameters = response.data);
+                }
+            }
+        });
+
+        function appendArray(form_data, values, name) {
+            if (!values && name)
+                form_data.append(name, '');
+            else {
+                if (typeof values == 'object') {
+                    for (key in values) {
+                        if (typeof values[key] == 'object')
+                            appendArray(form_data, values[key], name + '[' + key + ']');
+                        else
+                            form_data.append(name + '[' + key + ']', values[key]);
+                    }
+                } else
+                    form_data.append(name, values);
+            }
+
+            return form_data;
+        }
+
+
+        function accept() {
+            var form = $('form#base')[0];
+            var formdata = new FormData(form);
+
+            appendArray(formdata, vue.parameters, 'Parameters');
+
+            $.ajax({
+                type: 'POST',
+                url: '/Car/Update',
+                data: formdata,
+                processData: false,
+                contentType: false,
+                success: function (id) {
+                    console.log(id);
+                },
+                error: function (jhrx) {
+                    console.log(jhrx);
+                }
+            })
+        }
+    </script>
+
 }

@@ -1,8 +1,8 @@
-﻿using TestingProject.DTOs;
-using TestingProject.IServices;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using System.Threading.Tasks;
+using TestingProject.DTOs;
+using TestingProject.IServices;
 
 namespace TestingProject.WebApp.Controllers
 {

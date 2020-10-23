@@ -1,4 +1,6 @@
-﻿namespace TestingProject.DTOs
+﻿using System.Collections.Generic;
+
+namespace TestingProject.DTOs
 {
     public class CarDTO
     {
@@ -8,6 +10,7 @@
         public int DateId { get; set; }
 
         public DateTestDTO Dates { get; set; }
+        public IEnumerable<ParameterDTO> Parameters { get; set; }
     }
 
     public class NullCarDTO : CarDTO
@@ -17,7 +20,6 @@
             Id = -1;
             Name = "Empty";
             Price = 0;
-            Dates = new NullDateTestDTO();
         }
     }
 }

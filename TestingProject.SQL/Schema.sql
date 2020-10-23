@@ -39,3 +39,10 @@ CREATE TABLE [testing].[Attachments]
     [FilePath] NVARCHAR(100),
     [DateAdded] DATETIME2
 );
+
+CREATE TABLE [testing].[Parameters]
+(
+	[Id] INT NOT NULL PRIMARY KEY IDENTITY(1,1),
+	[Name] NVARCHAR(50) NOT NULL,
+	[Value] NVARCHAR(250)
+);
