@@ -35,8 +35,8 @@ namespace TestingProject.WebApp.Controllers
 
         public async Task<IActionResult> Update(CarDTO model)
         {
-            await _car.Update(model);
-            return RedirectToAction("Index");
+            int id = await _car.Update(model);
+            return Ok(id);
         }
 
         public async Task<IActionResult> Delete(int Id)

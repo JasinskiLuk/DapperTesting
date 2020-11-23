@@ -112,6 +112,18 @@
 
             appendArray(formdata, vue.parameters, 'Parameters');
 
+            axios({
+                method: "post",
+                url: "/Car/Update",
+                data: formdata
+            }).then(response => {
+                console.log(response.data)
+                window.location.href = "/Car/Index"
+            }).catch(error => {
+                console.log(error.response.data)
+            })
+
+            /*
             $.ajax({
                 type: 'POST',
                 url: '/Car/Update',
@@ -120,11 +132,14 @@
                 contentType: false,
                 success: function (id) {
                     console.log(id);
+                    window.location.href = "/Car/Index"
                 },
                 error: function (jhrx) {
                     console.log(jhrx);
                 }
             })
+            */
+
         }
     </script>
 

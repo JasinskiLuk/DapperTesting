@@ -26,12 +26,14 @@ namespace TestingProject.DbServices
         public async Task<int> Update(CarDTO DTO)
         {
             using SqlConnection conn = new SqlConnection(_connectionString);
-            return await conn.ExecuteScalarAsync<int>(@"UPDATE [testing].[Cars]
+            int id =  await conn.ExecuteScalarAsync<int>(@"UPDATE [testing].[Cars]
                                                         SET [Name] = @Name,
                                                             [Price] = @Price,
                                                             [DateId] = @DateId
+                                                        OUTPUT INSERTED.[Id]
                                                         WHERE [Id] = @Id",
                                                         new { DTO.Id, DTO.Name, DTO.Price, DTO.DateId });
+            return id;
         }
 
         public async Task Delete(int Id)
